@@ -2,6 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
+import seeds
 from flask import Flask, request, jsonify, url_for
 from flask_migrate import Migrate
 from flask_swagger import swagger
@@ -27,6 +28,11 @@ def handle_invalid_usage(error):
 @app.route('/')
 def sitemap():
     return generate_sitemap(app)
+
+@app.route('/round_table', methods=['POST', 'GET'])
+def handle_round_table():
+    seeds.run()
+    return 'seeds ran'
 
 @app.route('/hello', methods=['POST', 'GET'])
 def handle_hello():

@@ -6,6 +6,7 @@ class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(40))
     last_name = db.Column(db.String(40))
+    username = db.Column(db.String(40))
     date_of_birth = db.Column(db.String(10))
     email = db.Column(db.String(120))
 
@@ -16,6 +17,7 @@ class Users(db.Model):
         return {
             "first name": self.first_name,
             "last name": self.last_name,
+            "username": self.username,
             "date of birth": self.date_of_birth,
             "email": self.email
         }
